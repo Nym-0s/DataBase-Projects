@@ -99,6 +99,9 @@ namespace Lab02
             result.Text = "";
             int counter = 0;
             string? StudentSurname = StSurname2.Text.Trim();
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
+
             foreach (var item in _list)
             {
                 if (item.StLastName == StudentSurname)
@@ -106,9 +109,9 @@ namespace Lab02
                     result.Text += item.ToStringStudentBus();
                     counter++;
                 }
-                if (counter >= 500)
-                    break;
             }
+            clock.Stop(); //зупинка відліку
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
         private void button3_Click(object sender, EventArgs e)
