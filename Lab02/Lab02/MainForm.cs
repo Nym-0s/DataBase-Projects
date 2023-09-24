@@ -173,5 +173,27 @@ namespace Lab02
             statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
+        private void button6_Click(object sender, EventArgs e) //пошук вчителів за класною кімнатою
+        {
+            result.Text = "";
+            int Classroom = Convert.ToInt32(classroomTBTeach.Text.Trim());
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
+
+            foreach (var item in _list2)
+            {
+                if (item.Classroom == Classroom)
+                {
+                    result.Text += item.ToStringTeacher();
+                }
+            }
+            clock.Stop(); //зупинка відліку
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
+        }
+
+        private void button7_Click(object sender, EventArgs e) //пошук вчителів за ступенню класу
+        {
+
+        }
     }
 }
