@@ -16,6 +16,16 @@ namespace Lab02
             _list2 = new List<Teacher>(); //список вчителів
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("До побачення!", "Вихід", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true; // Отмена закрытия формы, если пользователь нажал "Отмена"
+            }
+        }
+
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stopwatch clock = new Stopwatch(); //таймер
