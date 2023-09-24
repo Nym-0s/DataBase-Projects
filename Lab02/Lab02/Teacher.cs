@@ -12,5 +12,10 @@ namespace Lab02
         public string TFirstName { get; set; }
         public int Classroom { get; set; }
 
+        public string ToStringTeacher()
+        {
+            string data = "  TEACHER: " + TLastName + " " + TFirstName + Environment.NewLine;
+            return data;
+        }
     }
 }
