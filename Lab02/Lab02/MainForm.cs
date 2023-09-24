@@ -193,7 +193,29 @@ namespace Lab02
 
         private void button7_Click(object sender, EventArgs e) //пошук вчителів за ступенню класу
         {
+            result.Text = "";
+            int Grade = Convert.ToInt32(gradeTBTeach.Text.Trim());
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
 
+            foreach (var item in _list)
+            {
+                if (item.Grade == Grade)
+                {
+                    //result.Text += item.ToStringTeacher(); //записуємо викладача
+
+                    foreach (var item2 in _list2)
+                    {
+                        if (item.Classroom == item2.Classroom) //порівнюємо класні кімнати
+                        {
+                            result.Text += "  " + item2.ToStringTeacher(); //записуємо його учня
+                        }
+                    }
+                    result.Text += "************************************" + Environment.NewLine;
+                }
+            }
+            clock.Stop(); //зупинка відліку
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
     }
 }
