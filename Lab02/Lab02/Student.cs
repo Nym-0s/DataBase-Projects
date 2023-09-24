@@ -23,12 +23,9 @@ namespace Lab02
             data += "Student Bus: " + Bus + Environment.NewLine;
             return data;
         }
-        public string ToStringStudentClassTeacher()
+        public string ToStringStudent()
         {
-            string data = "Student LastName: " + StLastName + Environment.NewLine;
-            data += "Student FirstName: " + StFirstName + Environment.NewLine;
-            data += "Student Classroom: " + Classroom + Environment.NewLine;
-            data += "****************************************" + Environment.NewLine;
+            string data = "STUDENT: " + StLastName + " " + StFirstName + Environment.NewLine;
             return data;
         }
          public string ToStringStudentBus()
