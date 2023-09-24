@@ -202,8 +202,6 @@ namespace Lab02
             {
                 if (item.Grade == Grade)
                 {
-                    //result.Text += item.ToStringTeacher(); //записуємо викладача
-
                     foreach (var item2 in _list2)
                     {
                         if (item.Classroom == item2.Classroom) //порівнюємо класні кімнати
