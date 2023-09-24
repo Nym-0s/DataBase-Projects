@@ -4,22 +4,25 @@ namespace Lab02
 {
     public partial class MainForm : Form
     {
-        private List<Student> _list;
+        private List<Student> _list; 
+        private List<Teacher> _list2;
 
         public MainForm()
         {
             InitializeComponent();
-            _list = new List<Student>();
+            _list = new List<Student>(); //список студентів
+            _list2 = new List<Teacher>(); //список вчителів
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                string[] lines = File.ReadAllLines("E:\\repos\\DataBase-Projects\\Lab01\\Lab01\\students.txt");
-                // StLastName, StFirstName,Grade,Classroom,Bus,TLastName,TFirstName
-                // COOKUS,XUAN ,3 ,107,52,FAFARD,ROCIO
-                foreach (string line in lines)
+                string[] linesStudents = File.ReadAllLines("E:\\repos\\DataBase-Projects\\Lab02\\Lab02\\list.txt");
+                // StLastName, StFirstName, Grade, Classroom, Bus
+                // COOKUS, XUAN, 3, 107, 52
+
+                foreach (string line in linesStudents)
                 {
                     string[] data = line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                     //result.Text += line + Environment.NewLine;
@@ -29,11 +32,26 @@ namespace Lab02
                         StFirstName = data[1],
                         Grade = int.Parse(data[2]),
                         Classroom = int.Parse(data[3]),
-                        Bus = int.Parse(data[4]),
-                        TLastName = data[5],
-                        TFirstName = data[6]
+                        Bus = int.Parse(data[4])
                     };
                     _list.Add(student);
+                }
+
+                string[] linesTeachers = File.ReadAllLines("E:\\repos\\DataBase-Projects\\Lab02\\Lab02\\teachers.txt");
+                // TLastName,TFirstName, Classroom
+                // FAFARD, ROCIO, 107
+
+                foreach (string line in linesTeachers)
+                {
+                    string[] data = line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    //result.Text += line + Environment.NewLine;
+                    Teacher teacher = new Teacher()
+                    {
+                        TLastName = data[0],
+                        TFirstName = data[1],
+                        Classroom = int.Parse(data[2]),
+                    };
+                    _list2.Add(teacher);
                 }
 
             }
@@ -54,7 +72,15 @@ namespace Lab02
             {
                 if (item.StLastName == StudentSurname)
                 {
-                    result.Text += item.ToStringStudentClassTeacher();
+                    result.Text += item.ToStringStudentClassTeacher(); //записуємо учня
+
+                    foreach (var item2 in _list2)
+                    {
+                        if (item2.Classroom == item.Classroom) //порівнюємо класні кімнати
+                        {
+                            result.Text += item.ToStringStudentClassTeacher(); //записуємо його викладачів
+                        }
+                    }
                     counter++;
                 }
                 if (counter >= 500)
