@@ -67,7 +67,7 @@ namespace Lab02
             statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //пошук вчителів за учнем
         {
             result.Text = "";
             string? StudentSurname = StSurname.Text.Trim();
@@ -94,7 +94,7 @@ namespace Lab02
             statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //пошук автобусу учня
         {
             result.Text = "";
             string? StudentSurname = StSurname2.Text.Trim();
@@ -112,7 +112,7 @@ namespace Lab02
             statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //пошук списку учнів за вчителем
         {
             result.Text = "";
             string? TeacherSurname = TSurname.Text.Trim();
@@ -139,7 +139,7 @@ namespace Lab02
             statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //пошук учнів за автобусом
         {
             result.Text = "";
             int counter = 0;
@@ -156,7 +156,7 @@ namespace Lab02
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //пошук учнів за ступенню їхнього класу
         {
             result.Text = "";
             int counter = 0;
