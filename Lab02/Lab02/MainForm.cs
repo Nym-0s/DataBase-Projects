@@ -200,13 +200,13 @@ namespace Lab02
 
             foreach (var item in _list)
             {
-                if (item.Grade == Grade)
+                if (item.Grade == Grade) //пошук потрібної ступені класу
                 {
-                    foreach (var item2 in _list2)
+                    foreach (var item2 in _list2) //пошук викладачів за класною кімнатою
                     {
-                        if (item.Classroom == item2.Classroom) //порівнюємо класні кімнати
+                        if (item.Classroom == item2.Classroom) //порівнюємо класні кімнати учня та вчителя
                         {
-                            result.Text += "  " + item2.ToStringTeacher(); //записуємо його учня
+                            result.Text += "  " + item2.ToStringTeacher(); //записуємо вчителя
                         }
                     }
                     result.Text += "************************************" + Environment.NewLine;
