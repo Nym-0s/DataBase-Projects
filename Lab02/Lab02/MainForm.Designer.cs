@@ -52,10 +52,10 @@
             button5 = new Button();
             groupBox6 = new GroupBox();
             button6 = new Button();
-            this.classroomTBTeach = new TextBox();
             groupBox7 = new GroupBox();
             button7 = new Button();
             gradeTBTeach = new TextBox();
+            classroomTBTeach = new TextBox();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -295,8 +295,8 @@
             // groupBox6
             // 
             groupBox6.BackColor = Color.AliceBlue;
+            groupBox6.Controls.Add(classroomTBTeach);
             groupBox6.Controls.Add(button6);
-            groupBox6.Controls.Add(this.classroomTBTeach);
             groupBox6.Location = new Point(12, 423);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(395, 70);
@@ -314,15 +314,7 @@
             button6.TabIndex = 12;
             button6.Text = "Find";
             button6.UseVisualStyleBackColor = false;
-            // 
-            // classroomTBTeach
-            // 
-            this.classroomTBTeach.Cursor = Cursors.IBeam;
-            this.classroomTBTeach.Location = new Point(16, 26);
-            this.classroomTBTeach.Name = "classroomTBTeach";
-            this.classroomTBTeach.PlaceholderText = " Classroom";
-            this.classroomTBTeach.Size = new Size(222, 27);
-            this.classroomTBTeach.TabIndex = 5;
+            button6.Click += button6_Click;
             // 
             // groupBox7
             // 
@@ -346,6 +338,7 @@
             button7.TabIndex = 12;
             button7.Text = "Find";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // gradeTBTeach
             // 
@@ -355,6 +348,15 @@
             gradeTBTeach.PlaceholderText = " Grade";
             gradeTBTeach.Size = new Size(222, 27);
             gradeTBTeach.TabIndex = 5;
+            // 
+            // classroomTBTeach
+            // 
+            classroomTBTeach.Cursor = Cursors.IBeam;
+            classroomTBTeach.Location = new Point(16, 26);
+            classroomTBTeach.Name = "classroomTBTeach";
+            classroomTBTeach.PlaceholderText = " Classroom";
+            classroomTBTeach.Size = new Size(222, 27);
+            classroomTBTeach.TabIndex = 13;
             // 
             // MainForm
             // 
@@ -430,6 +432,7 @@
         private TextBox gradeTBTeach;
         private TextBox textBox3;
         private GroupBox groupBox8;
+        private TextBox classroomTBTeach;
     }
 
 }
