@@ -84,7 +84,7 @@ namespace Lab02
                     {
                         if (item2.Classroom == item.Classroom) //порівнюємо класні кімнати
                         {
-                            result.Text += item2.ToStringTeacher(); //записуємо його викладачів
+                            result.Text += "  " + item2.ToStringTeacher(); //записуємо його викладачів
                         }
                     }
                     result.Text += "************************************" + Environment.NewLine;
@@ -97,7 +97,6 @@ namespace Lab02
         private void button2_Click(object sender, EventArgs e)
         {
             result.Text = "";
-            int counter = 0;
             string? StudentSurname = StSurname2.Text.Trim();
             Stopwatch clock = new Stopwatch(); //таймер
             clock.Start(); //початок відліку часу
@@ -107,7 +106,6 @@ namespace Lab02
                 if (item.StLastName == StudentSurname)
                 {
                     result.Text += item.ToStringStudentBus();
-                    counter++;
                 }
             }
             clock.Stop(); //зупинка відліку
@@ -117,18 +115,28 @@ namespace Lab02
         private void button3_Click(object sender, EventArgs e)
         {
             result.Text = "";
-            int counter = 0;
             string? TeacherSurname = TSurname.Text.Trim();
-            foreach (var item in _list)
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
+
+            foreach (var item in _list2)
             {
-                if (item.StFirstName == TeacherSurname)
+                if (item.TLastName == TeacherSurname)
                 {
-                    result.Text += item.ToStringTeachersStudentsList();
-                    counter++;
+                    result.Text += item.ToStringTeacher(); //записуємо викладача
+
+                    foreach (var item2 in _list)
+                    {
+                        if (item.Classroom == item2.Classroom) //порівнюємо класні кімнати
+                        {
+                            result.Text += "  " + item2.ToStringStudent(); //записуємо його учня
+                        }
+                    }
+                    result.Text += "************************************" + Environment.NewLine;
                 }
-                if (counter >= 500)
-                    break;
             }
+            clock.Stop(); //зупинка відліку
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
         private void button4_Click(object sender, EventArgs e)
