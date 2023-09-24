@@ -142,18 +142,19 @@ namespace Lab02
         private void button4_Click(object sender, EventArgs e) //пошук учнів за автобусом
         {
             result.Text = "";
-            int counter = 0;
             int BusNum = Convert.ToInt32(BusNumber.Text.Trim());
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
+
             foreach (var item in _list)
             {
                 if (item.Bus == BusNum)
                 {
                     result.Text += item.ToStringStudentsByBus();
-                    counter++;
                 }
-                if (counter >= 500)
-                    break;
             }
+            clock.Stop(); //зупинка відліку
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
         private void button5_Click(object sender, EventArgs e) //пошук учнів за ступенню їхнього класу
