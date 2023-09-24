@@ -41,7 +41,7 @@ namespace Lab02
                 }
 
                 string[] linesTeachers = File.ReadAllLines("E:\\repos\\DataBase-Projects\\Lab02\\Lab02\\teachers.txt");
-                // TLastName,TFirstName, Classroom
+                // TLastName, TFirstName, Classroom
                 // FAFARD, ROCIO, 107
 
                 foreach (string line in linesTeachers)
