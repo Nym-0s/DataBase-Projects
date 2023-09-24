@@ -348,6 +348,4 @@
         private Button button8;
     }
 
-        #endregion
-    }
 }
