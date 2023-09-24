@@ -6,8 +6,8 @@ namespace Lab02
 {
     public partial class MainForm : Form
     {
-        private List<Student> _list;
-        private List<Teacher> _list2;
+        private List<Student> _list; //список студентів
+        private List<Teacher> _list2; //список вчителів
 
         public MainForm()
         {
@@ -56,14 +56,12 @@ namespace Lab02
                     _list2.Add(teacher);
                 }
                 clock.Stop(); //зупинка відліку
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 throw;
             }
-
             statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
@@ -160,18 +158,19 @@ namespace Lab02
         private void button5_Click(object sender, EventArgs e) //пошук учнів за ступенню їхнього класу
         {
             result.Text = "";
-            int counter = 0;
             int Grade = Convert.ToInt32(GradeTB.Text.Trim());
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
+
             foreach (var item in _list)
             {
                 if (item.Grade == Grade)
                 {
-                    result.Text += item.ToStrinStudentsGrade();
-                    counter++;
+                    result.Text += item.ToStringStudent();
                 }
-                if (counter >= 500)
-                    break;
             }
+            clock.Stop(); //зупинка відліку
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
     }
