@@ -1,10 +1,12 @@
+using Microsoft.VisualBasic.Devices;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Lab02
 {
     public partial class MainForm : Form
     {
-        private List<Student> _list; 
+        private List<Student> _list;
         private List<Teacher> _list2;
 
         public MainForm()
@@ -16,6 +18,8 @@ namespace Lab02
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
             try
             {
                 string[] linesStudents = File.ReadAllLines("E:\\repos\\DataBase-Projects\\Lab02\\Lab02\\list.txt");
@@ -25,7 +29,6 @@ namespace Lab02
                 foreach (string line in linesStudents)
                 {
                     string[] data = line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    //result.Text += line + Environment.NewLine;
                     Student student = new Student()
                     {
                         StLastName = data[0],
@@ -44,7 +47,6 @@ namespace Lab02
                 foreach (string line in linesTeachers)
                 {
                     string[] data = line.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    //result.Text += line + Environment.NewLine;
                     Teacher teacher = new Teacher()
                     {
                         TLastName = data[0],
@@ -53,6 +55,7 @@ namespace Lab02
                     };
                     _list2.Add(teacher);
                 }
+                clock.Stop(); //зупинка відліку
 
             }
             catch (Exception ex)
@@ -60,32 +63,35 @@ namespace Lab02
                 MessageBox.Show(ex.Message);
                 throw;
             }
-            statusStrip1.Items[1].Text = _list.Count.ToString();
+
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             result.Text = "";
-            int counter = 0;
             string? StudentSurname = StSurname.Text.Trim();
+            Stopwatch clock = new Stopwatch(); //таймер
+            clock.Start(); //початок відліку часу
+
             foreach (var item in _list)
             {
                 if (item.StLastName == StudentSurname)
                 {
-                    result.Text += item.ToStringStudentClassTeacher(); //записуємо учня
+                    result.Text += item.ToStringStudent(); //записуємо учня
 
                     foreach (var item2 in _list2)
                     {
                         if (item2.Classroom == item.Classroom) //порівнюємо класні кімнати
                         {
-                            result.Text += item.ToStringStudentClassTeacher(); //записуємо його викладачів
+                            result.Text += item2.ToStringTeacher(); //записуємо його викладачів
                         }
                     }
-                    counter++;
+                    result.Text += "************************************" + Environment.NewLine;
                 }
-                if (counter >= 500)
-                    break;
             }
+            clock.Stop(); //зупинка відліку
+            statusStrip1.Items[1].Text = Convert.ToString(clock.Elapsed);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -112,7 +118,7 @@ namespace Lab02
             string? TeacherSurname = TSurname.Text.Trim();
             foreach (var item in _list)
             {
-                if (item.TLastName == TeacherSurname)
+                if (item.StFirstName == TeacherSurname)
                 {
                     result.Text += item.ToStringTeachersStudentsList();
                     counter++;
