@@ -36,23 +36,7 @@ namespace Lab02
             return data;
         }
 
-        public string ToStringTeachersStudentsList()
-        {
-            string data = "Student LastName: " + StLastName + Environment.NewLine;
-            data += "Student FirstName: " + StFirstName + Environment.NewLine;
-            data += "****************************************" + Environment.NewLine;
-            return data;
-        }
-
         public string ToStringStudentsByBus()
-        {
-            string data = "Student LastName: " + StLastName + Environment.NewLine;
-            data += "Student FirstName: " + StFirstName + Environment.NewLine;
-            data += "****************************************" + Environment.NewLine;
-            return data;
-        }
-
-        public string ToStrinStudentsGrade()
         {
             string data = "Student LastName: " + StLastName + Environment.NewLine;
             data += "Student FirstName: " + StFirstName + Environment.NewLine;
