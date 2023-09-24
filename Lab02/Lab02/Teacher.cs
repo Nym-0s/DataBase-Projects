@@ -14,7 +14,7 @@ namespace Lab02
 
         public string ToStringTeacher()
         {
-            string data = "  TEACHER: " + TLastName + " " + TFirstName + Environment.NewLine;
+            string data = "TEACHER: " + TLastName + " " + TFirstName + Environment.NewLine;
             return data;
         }
     }
